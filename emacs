@@ -14,6 +14,16 @@
 (global-set-key [?\M-`] 'lacarte-execute-command)
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
+(add-to-list 'load-path "~/.emacs.d/erc-extras")
+(require 'erc-nicklist)
+(add-to-list 'load-path "~/.emacs.d/chess")
+(require 'chess)
+(add-to-list 'load-path "~/.emacs.d")
+(require 'go-mode-load)
+(setq mm-text-html-renderer 'w3m)
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
 (autoload 'gtags-mode "gtags.el" "" t)
 (defun djcb-gtags-create-or-update ()
   "create or update the gnu global tag file"
@@ -47,3 +57,14 @@
   smtpmail-smtp-server "smtp.gmail.com"
   smtpmail-smtp-service 587)
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+  (c-add-style "openbsd"
+    '("bsd"
+     (indent-tabs-mode . t)
+     (defun-block-intro . 8)
+     (statement-block-intro . 8)
+     (statement-case-intro . 8)
+     (substatement-open . 4)
+     (substatement . 8)
+     (arglist-cont-nonempty . 4)
+     (inclass . 8)
+     (knr-argdecl-intro . 8)))
