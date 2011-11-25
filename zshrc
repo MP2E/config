@@ -1,4 +1,4 @@
-###########################################################        
+#################################################################
 # Options for Zsh
 
 export HISTFILE=~/.zsh_history
@@ -66,7 +66,7 @@ bindkey '^[[6~' down-line-or-history
 bindkey '^[[A' up-line-or-search
 bindkey '^[[D' backward-char
 bindkey '^[[B' down-line-or-search
-bindkey '^[[C' forward-char 
+bindkey '^[[C' forward-char
 bindkey '^[w' backward-delete-to-slash
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
@@ -108,7 +108,7 @@ alias hist="grep '$1' /home/cray/.zsh_history"
 alias mem="free -m"
 
 # command L equivalent to command |less
-alias -g L='|less' 
+alias -g L='|less'
 
 # command S equivalent to command &> /dev/null &
 alias -g S='&> /dev/null &'
