@@ -51,6 +51,7 @@ servers = (
   },
   {
     address = "irc.slipgate.org";
+    chatnet = "Slipgate";
     port = "0";
     use_ssl = "no";
     ssl_verify = "no";
@@ -124,7 +125,6 @@ chatnets = {
   SILC = { type = "SILC"; };
   Esper = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY pass";
   };
   Skulltag = { type = "IRC"; };
   Slipgate = { type = "IRC"; };

@@ -14,6 +14,11 @@
   (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
       (doxymacs-font-lock)
     (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)))
+(require 're-builder)
+(setq reb-re-syntax 'string)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(set-default-font "-unknown-Droid Sans Mono-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
 (setq gnus-select-method '(nnimap "gmail"
 				  (nnimap-address "imap.gmail.com")
 				  (nnimap-server-port 993)

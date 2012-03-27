@@ -5,7 +5,6 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
 eval `dircolors -b`
-source /etc/profile.d/devkitarm.sh
 
 autoload -U compinit compinit
 setopt autopushd pushdminus pushdsilent pushdtohome
