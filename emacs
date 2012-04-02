@@ -19,6 +19,11 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (set-default-font "-unknown-Droid Sans Mono-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+(setenv "PATH"
+  (concat
+   "/opt/mingw/bin" ":"
+   "/home/cray/gohg/bin" ":"
+   (getenv "PATH")))
 (setq gnus-select-method '(nnimap "gmail"
 				  (nnimap-address "imap.gmail.com")
 				  (nnimap-server-port 993)
