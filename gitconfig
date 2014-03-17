@@ -1,0 +1,14 @@
+[user]
+	name = Cray Elliott
+	email = MP2E@archlinux.us
+[color]
+	ui = auto
+[push]
+    default = simple
+[core]
+    whitespace = trailing-space,space-before-tab
+	autocrlf = input
+[apply]
+    whitespace = fix
+[http]
+	postBuffer = 524288000

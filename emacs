@@ -5,7 +5,7 @@
  (end-of-buffer)
 (eval-print-last-sexp))) 
 (el-get 'sync)
-(eval-after-load "color-theme" '(color-theme-twilight))
+(color-theme-solarized-dark)
 (setq gdb-command-name "egdb")
 (setq make-backup-files nil)
 (evil-mode 1)
@@ -18,11 +18,9 @@
 (setq reb-re-syntax 'string)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(set-default-font "-unknown-Droid Sans Mono-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
 (setenv "PATH"
   (concat
    "/opt/mingw/bin" ":"
-   "/home/cray/gohg/bin" ":"
    (getenv "PATH")))
 (setq gnus-select-method '(nnimap "gmail"
 				  (nnimap-address "imap.gmail.com")
@@ -35,14 +33,19 @@
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
-(c-add-style "openbsd"
-	     '("bsd"
-	       (indent-tabs-mode . t)
-	       (defun-block-intro . 8)
-	       (statement-block-intro . 8)
-	       (statement-case-intro . 8)
-	       (substatement-open . 4)
-	       (substatement . 8)
-	       (arglist-cont-nonempty . 4)
-	       (inclass . 8)
-	       (knr-argdecl-intro . 8)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(setq shm-program-name "/home/cray/.emacs.d/el-get/structured-haskell-mode/dist/build/structured-haskell-mode/structured-haskell-mode")
+(require 'shm)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init) (structured-haskell-mode)))
+(autoload 'ghc-init "ghc" nil t)

@@ -1,0 +1,9 @@
+= MP2E's gentoo config scripts
+
+* emacs config
+* zshrc
+* irssi config
+* portage related stuff
+* gitconfig
+
+Passwords stripped out, obviously.

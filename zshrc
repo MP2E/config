@@ -1,12 +1,18 @@
 #################################################################
 # Options for Zsh
 
+export SDL_SOUNDFONTS=/home/cray/soundfonts/weedsgm3.sf2
+export DOOMWADDIR=~/wads
+export PATH=$PATH:/usr/games/bin
+
 export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
 eval `dircolors -b`
 
-autoload -U compinit compinit
+autoload -U compinit promptinit
+compinit
+promptinit; prompt gentoo
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt autocd
 setopt cdablevars
@@ -24,9 +30,9 @@ export PS1="$(print '%{\e[1;34m%}%n%{\e[0m%}'):$(print '%{\e[0;34m%}%~%{\e[0m%}'
 export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 
 # Vars used later on by Zsh
-export EDITOR="emacsclient -c"
+export EDITOR="vi"
 export BROWSER=chromium
-export XTERM="urxvt"
+export XTERM="gnome-terminal"
 
 ##################################################################
 # Stuff to make my life easier
@@ -70,8 +76,8 @@ bindkey '^[w' backward-delete-to-slash
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
 # for rxvt
-bindkey "\e[7~" beginning-of-line # Home
-bindkey "\e[8~" end-of-line # End
+# bindkey "\e[7~" beginning-of-line # Home
+# bindkey "\e[8~" end-of-line # End
 
 ##################################################################
 # My aliases
@@ -91,7 +97,6 @@ alias -s gz='tar -xzvf'
 alias -s bz2='tar -xjvf'
 alias -s java=$EDITOR
 alias -s txt=$EDITOR
-alias -s PKGBUILD=$EDITOR
 
 # Normal aliases
 alias ls='ls --color=auto -F'

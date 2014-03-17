@@ -1,21 +1,12 @@
 servers = (
   { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
   { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
   { 
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
   },
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  {
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
-  },
   {
     address = "irc.oftc.net";
     chatnet = "OFTC";
@@ -34,6 +25,14 @@ servers = (
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
   { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
   {
+    address = "irc.freenode.net";
+    chatnet = "FreeNode";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
+  },
+  {
     address = "irc.esper.net";
     chatnet = "Esper";
     port = "6667";
@@ -42,17 +41,9 @@ servers = (
     autoconnect = "yes";
   },
   {
-    address = "irc.skulltag.com";
-    chatnet = "Skulltag";
+    address = "irc.zandronum.com";
+    chatnet = "Zandronum";
     port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
-  },
-  {
-    address = "irc.slipgate.org";
-    chatnet = "Slipgate";
-    port = "0";
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
@@ -67,12 +58,6 @@ chatnets = {
     max_whois = "4";
     max_query_chans = "5";
   };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
   Undernet = {
     type = "IRC";
     max_kicks = "1";
@@ -85,15 +70,9 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
   OFTC = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY pass";
+    autosendcmd = "/msg NickServ IDENTIFY PASS;wait 2000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -123,29 +102,28 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
+  FreeNode = {
+    type = "IRC";
+    autosendcmd = "/msg NickServ IDENTIFY PASS;wait 2000";
+  };
   Esper = {
     type = "IRC";
+    autosendcmd = "/msg NickServ IDENTIFY PASS; wait 2000";
   };
-  Skulltag = { type = "IRC"; };
-  Slipgate = { type = "IRC"; };
+  Zandronum = {
+    type = "IRC";
+    autosendcmd = "/msg NickServ IDENTIFY PASS";
+  };
 };
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#else#if"; chatnet = "Esper"; autojoin = "yes"; },
-  { name = "#noteternityengine"; chatnet = "OFTC"; },
-  { name = "#odamex"; chatnet = "OFTC"; autojoin = "yes"; },
-  { name = "#MLK"; chatnet = "Skulltag"; autojoin = "yes"; },
-  { name = "#skulltag"; chatnet = "Skulltag"; autojoin = "yes"; },
-  { name = "#altdeath"; chatnet = "QuakeNet"; autojoin = "yes"; },
-  { name = "#eternitycs"; chatnet = "QuakeNet"; autojoin = "yes"; },
-  {
-    name = "#noteternityenginerelated";
-    chatnet = "OFTC";
-    autojoin = "yes";
-  },
-  { name = "#slipgate"; chatnet = "Slipgate"; autojoin = "yes"; }
+  { name = "#armada"; chatnet = "Zandronum"; autojoin = "yes"; },
+  { name = "#doom64ex"; chatnet = "OFTC"; autojoin = "yes"; },
+  { name = "#noteternityenginerelated"; chatnet = "OFTC"; autojoin = "yes"; },
+  { name = "#haskell"; chatnet = "FreeNode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -310,12 +288,11 @@ statusbar = {
   };
 };
 settings = {
-  core = { 
-    real_name = "Cray Elliott";
-    user_name = "cray";
-    nick = "MP2E";
-  };
+  core = { real_name = "Unknown"; user_name = "cray"; nick = "MP2E"; };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { autolog = "yes"; };
+  "fe-common/core" = { use_status_window = "no"; autolog = "yes"; };
+  "irc/core" = { alternate_nick = "MP2E_"; };
 };
+hilights = ( { text = "MP2E"; nick = "yes"; word = "yes"; } );
 logs = { };
+ignores = ( );
