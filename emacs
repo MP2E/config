@@ -47,5 +47,4 @@
  )
 (setq shm-program-name "/home/cray/.emacs.d/el-get/structured-haskell-mode/dist/build/structured-haskell-mode/structured-haskell-mode")
 (require 'shm)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init) (structured-haskell-mode)))
-(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook `structured-haskell-mode)

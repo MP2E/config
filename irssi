@@ -46,7 +46,7 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
-    autoconnect = "yes";
+    autoconnect = "no";
   }
 );
 
@@ -72,7 +72,7 @@ chatnets = {
   };
   OFTC = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY PASS;wait 2000";
+    autosendcmd = "/msg NickServ IDENTIFY ;wait 2000";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -104,15 +104,15 @@ chatnets = {
   SILC = { type = "SILC"; };
   FreeNode = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY PASS;wait 2000";
+    autosendcmd = "/msg NickServ IDENTIFY ;wait 2000";
   };
   Esper = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY PASS; wait 2000";
+    autosendcmd = "/msg NickServ IDENTIFY ; wait 2000";
   };
   Zandronum = {
     type = "IRC";
-    autosendcmd = "/msg NickServ IDENTIFY PASS";
+    autosendcmd = "/msg NickServ IDENTIFY ";
   };
 };
 
@@ -121,8 +121,13 @@ channels = (
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#else#if"; chatnet = "Esper"; autojoin = "yes"; },
   { name = "#armada"; chatnet = "Zandronum"; autojoin = "yes"; },
+  { name = "#EG"; chatnet = "Zandronum"; autojoin = "yes"; },
   { name = "#doom64ex"; chatnet = "OFTC"; autojoin = "yes"; },
-  { name = "#noteternityenginerelated"; chatnet = "OFTC"; autojoin = "yes"; },
+  {
+    name = "#noteternityenginerelated";
+    chatnet = "OFTC";
+    autojoin = "yes";
+  },
   { name = "#haskell"; chatnet = "FreeNode"; autojoin = "yes"; }
 );
 
@@ -295,4 +300,14 @@ settings = {
 };
 hilights = ( { text = "MP2E"; nick = "yes"; word = "yes"; } );
 logs = { };
-ignores = ( );
+ignores = (
+  { mask = "Jitendra"; level = "ALL"; },
+  { mask = "skypers"; level = "ALL"; },
+  { mask = "mars0000"; level = "ALL"; },
+  { mask = "Guest74498"; level = "ALL"; },
+  { mask = "SrPx"; level = "ALL"; },
+  { mask = "chungy"; level = "ALL"; },
+  { mask = "CSGWork"; level = "ALL"; },
+  { mask = "JDlugosz"; level = "ALL"; },
+  { mask = "ConSiGno"; level = "ALL"; }
+);

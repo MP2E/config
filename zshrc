@@ -3,7 +3,8 @@
 
 export SDL_SOUNDFONTS=/home/cray/soundfonts/weedsgm3.sf2
 export DOOMWADDIR=~/wads
-export PATH=$PATH:/usr/games/bin
+export PATH=$PATH:/usr/games/bin:/home/cray/.cabal/bin
+export CONFIG_SND_HDA_PREALLOC_SIZE=64
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
