@@ -1,0 +1,23 @@
+Config { font = "xft:Terminus:size=10"
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "white"
+       , position = Top
+       , lowerOnStart = True
+       , pickBroadest = False
+       , allDesktops = True
+       , overrideRedirect = True
+       , persistent = True
+       , hideOnStart = False
+       , commands = [ Run Network "wlp7s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+             	    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %cpu%   %memory% * %swap%   %wlp7s0%   <fc=#ee9a00>%date%</fc>"
+       }
