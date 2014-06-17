@@ -13,7 +13,7 @@ eval `dircolors -b`
 
 autoload -U compinit promptinit
 compinit
-promptinit; prompt gentoo
+promptinit;
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt autocd
 setopt cdablevars
@@ -34,6 +34,7 @@ export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 export EDITOR="vi"
 export BROWSER=chromium
 export XTERM="gnome-terminal"
+export LANG=en_US.UTF-8
 
 ##################################################################
 # Stuff to make my life easier

@@ -5,7 +5,6 @@
  (end-of-buffer)
 (eval-print-last-sexp))) 
 (el-get 'sync)
-(color-theme-solarized-dark)
 (setq gdb-command-name "egdb")
 (setq make-backup-files nil)
 (evil-mode 1)
@@ -38,6 +37,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -45,6 +45,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setq shm-program-name "/home/cray/.emacs.d/el-get/structured-haskell-mode/dist/build/structured-haskell-mode/structured-haskell-mode")
+(setq shm-program-name "/home/cray/.cabal/bin/structured-haskell-mode")
 (require 'shm)
 (add-hook 'haskell-mode-hook `structured-haskell-mode)

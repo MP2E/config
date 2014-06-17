@@ -300,14 +300,3 @@ settings = {
 };
 hilights = ( { text = "MP2E"; nick = "yes"; word = "yes"; } );
 logs = { };
-ignores = (
-  { mask = "Jitendra"; level = "ALL"; },
-  { mask = "skypers"; level = "ALL"; },
-  { mask = "mars0000"; level = "ALL"; },
-  { mask = "Guest74498"; level = "ALL"; },
-  { mask = "SrPx"; level = "ALL"; },
-  { mask = "chungy"; level = "ALL"; },
-  { mask = "CSGWork"; level = "ALL"; },
-  { mask = "JDlugosz"; level = "ALL"; },
-  { mask = "ConSiGno"; level = "ALL"; }
-);
