@@ -1,4 +1,4 @@
-Config { font = "xft:Terminus:size=10"
+Config { font = "xft:Terminus:size=12"
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
@@ -10,14 +10,14 @@ Config { font = "xft:Terminus:size=10"
        , overrideRedirect = True
        , persistent = True
        , hideOnStart = False
-       , commands = [ Run Network "wlp7s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+       , commands = [ Run Network "enp3s0" ["-L","30000","-H","100000","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
-             	    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu%   %memory% * %swap%   %wlp7s0%   <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu%   %memory% * %swap%   %enp3s0%   <fc=#ee9a00>%date%</fc>"
        }

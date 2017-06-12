@@ -8,7 +8,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
-import Data.Monoid
+import Data.Monoid()
 import System.IO
 import System.Exit
 
@@ -48,7 +48,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["web","irc","code","term","media","etc","7","8","9"]
+myWorkspaces    = ["web","irc","code","term","media","dis","etc","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -67,7 +67,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -131,12 +131,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
-      
+
     -- MP2E's additional bindings
     , ((controlMask,        xK_Print ), spawn "sleep 0.2; scrot -s")
     , ((0, xK_Print), spawn "scrot")
-      
-    , ((mod1Mask,            xK_F4), kill)
     ]
     ++
 
@@ -188,7 +186,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| noBorders Full)
+myLayout = avoidStruts $ tiled ||| Mirror tiled ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -223,8 +221,7 @@ myManageHook = composeAll
     , className =? "File Operation Progress" --> doFloat
     , className =? "xfce4-notifyd"           --> doIgnore
     , className =? "desktop_window"          --> doIgnore
-    , className =? "Skype"                   --> doFloat
-    , className =? "Firefox"                 --> doShift "web"
+    , className =? "Chromium-browser"        --> doShift "web"
     , resource  =? "desktop_window"          --> doIgnore
     , resource  =? "kdesktop"                --> doIgnore ]
 
@@ -237,7 +234,8 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = mconcat [ docksEventHook
+                      , handleEventHook defaultConfig ]
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -264,7 +262,7 @@ main = do
             , ppSep = "   "
             }
         }
-      
+
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will

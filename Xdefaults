@@ -5,7 +5,7 @@ URxvt.scrollBar: false
 URxvt.background: [90]#000000
 URxvt.foreground: #FFFFFF
 URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/firefox
+URxvt.url-launcher: /run/current-system/sw/bin/chromium
 URxvt.matcher.button: 1
 
 ! Dat solarized

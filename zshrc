@@ -1,9 +1,9 @@
 #################################################################
 # Options for Zsh
 
-export SDL_SOUNDFONTS=/home/cray/soundfonts/weedsgm3.sf2
+export SDL_SOUNDFONTS=/home/cray/soundfonts/gm.sf2
 export DOOMWADDIR=~/wads
-export PATH=$PATH:/usr/games/bin:/home/cray/.cabal/bin
+export ETERNITYBASE=~/eternitygit/base
 export CONFIG_SND_HDA_PREALLOC_SIZE=64
 
 export HISTFILE=~/.zsh_history
@@ -31,9 +31,9 @@ export PS1="$(print '%{\e[1;34m%}%n%{\e[0m%}'):$(print '%{\e[0;34m%}%~%{\e[0m%}'
 export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 
 # Vars used later on by Zsh
-export EDITOR="vi"
+export EDITOR="vim"
 export BROWSER=chromium
-export XTERM="gnome-terminal"
+export XTERM="urxvt"
 export LANG=en_US.UTF-8
 
 ##################################################################
