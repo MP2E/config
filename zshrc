@@ -3,7 +3,6 @@
 
 export SDL_SOUNDFONTS=/home/cray/soundfonts/gm.sf2
 export DOOMWADDIR=~/wads
-export ETERNITYBASE=~/eternitygit/base
 export CONFIG_SND_HDA_PREALLOC_SIZE=64
 
 export HISTFILE=~/.zsh_history
@@ -35,6 +34,9 @@ export EDITOR="vim"
 export BROWSER=chromium
 export XTERM="urxvt"
 export LANG=en_US.UTF-8
+
+# horrible hack needed for using openssh with zsh on nixos
+export TERM="rxvt-256color"
 
 ##################################################################
 # Stuff to make my life easier

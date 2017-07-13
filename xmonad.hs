@@ -7,9 +7,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Layout.IndependentScreens
 import Data.Monoid()
-import System.IO
 import System.Exit
 
 import qualified XMonad.StackSet as W
@@ -22,7 +21,7 @@ myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
@@ -124,7 +123,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_q     ), io exitSuccess)
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
@@ -142,8 +141,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    [((m .|. modm, k), windows $ onCurrentScreen f i)
+        | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
@@ -235,7 +234,7 @@ myManageHook = composeAll
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 myEventHook = mconcat [ docksEventHook
-                      , handleEventHook defaultConfig ]
+                      , handleEventHook def ]
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -253,15 +252,11 @@ myStartupHook = setWMName "LG3D"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "xmobar -d"
-    xmonad $ defaults {
-        logHook = dynamicLogWithPP $ xmobarPP {
-              ppOutput = hPutStrLn xmproc
-            , ppTitle = xmobarColor "#FFB6B0" "" . shorten 100
-            , ppCurrent = xmobarColor "#CEFFAC" ""
-            , ppSep = "   "
-            }
-        }
+    screencount <- countScreens
+    xmonad =<< xmobar (defaults {
+          workspaces = withScreens screencount myWorkspaces
+        , logHook = dynamicLogXinerama
+        })
 
 
 -- A structure containing your configuration settings, overriding
@@ -277,7 +272,6 @@ defaults = def {
         clickJustFocuses   = myClickJustFocuses,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
-        workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
 

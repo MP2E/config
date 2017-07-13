@@ -121,14 +121,17 @@ channels = (
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#else#if"; chatnet = "Esper"; autojoin = "yes"; },
   { name = "#armada"; chatnet = "Zandronum"; autojoin = "yes"; },
-  { name = "#EG"; chatnet = "Zandronum"; autojoin = "yes"; },
+  { name = "#push"; chatnet = "Zandronum"; autojoin = "yes"; },
   { name = "#doom64ex"; chatnet = "OFTC"; autojoin = "yes"; },
+  { name = "#doomtwid"; chatnet = "OFTC"; autojoin = "yes"; },
   {
     name = "#noteternityenginerelated";
     chatnet = "OFTC";
     autojoin = "yes";
   },
   { name = "#haskell"; chatnet = "FreeNode"; autojoin = "yes"; }
+  { name = "#nixos"; chatnet = "FreeNode"; autojoin = "yes"; }
+  { name = "#tasbot"; chatnet = "FreeNode"; autojoin = "yes"; }
 );
 
 aliases = {
