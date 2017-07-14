@@ -19,7 +19,7 @@ Config { font = "xft:Terminus:size=12"
                                  , "--normal"   , "green"
                                  , "--high"     , "red"
                                  ] 10
-    
+
             -- cpu activity monitor
             , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%|<total2>%|<total3>%"
                                  , "--Low"      , "50"         -- units: %
@@ -28,7 +28,7 @@ Config { font = "xft:Terminus:size=12"
                                  , "--normal"   , "green"
                                  , "--high"     , "red"
                                  ] 10
-    
+
             -- cpu core temperature monitor
             , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
                                  , "--Low"      , "70"        -- units: °C
@@ -37,7 +37,7 @@ Config { font = "xft:Terminus:size=12"
                                  , "--normal"   , "green"
                                  , "--high"     , "red"
                                  ] 50
-                              
+
             -- memory usage monitor
             , Run Memory         [ "--template" ,"Mem: <usedratio>%"
                                  , "--Low"      , "20"        -- units: %
@@ -46,7 +46,7 @@ Config { font = "xft:Terminus:size=12"
                                  , "--normal"   , "green"
                                  , "--high"     , "red"
                                  ] 10
-    
+
             -- battery monitor
             , Run Battery        [ "--template" , "Batt: <acstatus>"
                                  , "--Low"      , "10"        -- units: %
@@ -54,7 +54,7 @@ Config { font = "xft:Terminus:size=12"
                                  , "--low"      , "red"
                                  , "--normal"   , "green"
                                  , "--high"     , "blue"
-    
+
                                  , "--" -- battery specific options
                                            -- discharging status
                                            , "-o"	, "<left>% (<timeleft>)"
@@ -63,8 +63,8 @@ Config { font = "xft:Terminus:size=12"
                                            -- charged status
                                            , "-i"	, "<fc=#12ff12>Charged</fc>"
                                  ] 50
-    
-            -- time and date indicator 
+
+            -- time and date indicator
             --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
             , Run Date           "%F (%a) %T" "date" 10
             , Run StdinReader
