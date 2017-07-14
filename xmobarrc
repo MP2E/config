@@ -49,11 +49,11 @@ Config { font = "xft:Terminus:size=12"
 
             -- battery monitor
             , Run Battery        [ "--template" , "Batt: <acstatus>"
-                                 , "--Low"      , "10"        -- units: %
+                                 , "--Low"      , "20"        -- units: %
                                  , "--High"     , "80"        -- units: %
                                  , "--low"      , "red"
-                                 , "--normal"   , "green"
-                                 , "--high"     , "blue"
+                                 , "--normal"   , "yellow"
+                                 , "--high"     , "green"
 
                                  , "--" -- battery specific options
                                            -- discharging status
