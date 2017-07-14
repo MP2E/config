@@ -59,7 +59,7 @@ Config { font = "xft:Terminus:size=12"
                                            -- discharging status
                                            , "-o"	, "<left>% (<timeleft>)"
                                            -- AC "on" status
-                                           , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                           , "-O"	, "<fc=#ffff00>Charging</fc>"
                                            -- charged status
                                            , "-i"	, "<fc=#12ff12>Charged</fc>"
                                  ] 50
