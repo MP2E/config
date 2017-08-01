@@ -48,18 +48,19 @@ Config { font = "xft:Terminus:size=12"
                                  ] 10
 
             -- battery monitor
-            , Run Battery        [ "--template" , "Batt: <acstatus>"
+            , Run BatteryP       [ "BAT0", "BAT1" ]
+                                 [ "--template" , "Batt: <acstatus>"
                                  , "--Low"      , "20"        -- units: %
-                                 , "--High"     , "80"        -- units: %
+                                 , "--High"     , "70"        -- units: %
                                  , "--low"      , "red"
-                                 , "--normal"   , "yellow"
+                                 , "--normal"   , "lightgreen"
                                  , "--high"     , "green"
 
                                  , "--" -- battery specific options
                                            -- discharging status
                                            , "-o"	, "<left>% (<timeleft>)"
                                            -- AC "on" status
-                                           , "-O"	, "<fc=#ffff00>Charging</fc>"
+                                           , "-O"	, "<fc=#ffff00>Chrg</fc> <left>% <timeleft>"
                                            -- charged status
                                            , "-i"	, "<fc=#12ff12>Charged</fc>"
                                  ] 50
