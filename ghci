@@ -3,3 +3,4 @@ import Language.Haskell.HsColour
 import Language.Haskell.HsColour.Colourise
 let colorPrint = putStrLn . hscolour TTY defaultColourPrefs False False "" False . ppShow
 :set -interactive-print colorPrint
+:set prompt "λ> "
