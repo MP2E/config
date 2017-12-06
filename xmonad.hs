@@ -9,7 +9,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens
-import Data.Monoid()
+import Data.Monoid
 import System.Exit
 
 import qualified XMonad.StackSet as W
@@ -227,9 +227,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
--- myEventHook = mconcat [ docksEventHook
---                       , handleEventHook def ]
-myEventHook = fullscreenEventHook
+myEventHook = docksEventHook <> handleEventHook def <> fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Startup hook
