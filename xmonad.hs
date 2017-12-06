@@ -3,6 +3,7 @@
 --
 
 import XMonad
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
@@ -185,7 +186,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts . smartBorders $ layoutHook def
+myLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled) ||| noBorders Full
+  where
+    tiled = Tall nmaster delta ratio
+    nmaster = 1
+    ratio = 1/2
+    delta = 3/100
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -221,8 +227,9 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mconcat [ docksEventHook
-                      , handleEventHook def ]
+-- myEventHook = mconcat [ docksEventHook
+--                       , handleEventHook def ]
+myEventHook = fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Startup hook
