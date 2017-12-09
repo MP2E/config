@@ -1,15 +1,5 @@
 Config { font = "xft:Terminus:size=12"
-       , borderColor = "black"
-       , border = TopB
-       , bgColor = "black"
-       , fgColor = "white"
-       , position = TopW L 100
-       , lowerOnStart = False
-       , pickBroadest = False
        , allDesktops = False
-       , overrideRedirect = False
-       , persistent = True
-       , hideOnStart = False
        , commands =
             -- network activity monitor (dynamic interface resolution)
             [ Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
@@ -48,8 +38,7 @@ Config { font = "xft:Terminus:size=12"
                                  ] 10
 
             -- battery monitor
-            , Run BatteryP       [ "BAT0", "BAT1" ]
-                                 [ "--template" , "Batt: <acstatus>"
+            , Run Battery        [ "--template" , "Batt: <acstatus>"
                                  , "--Low"      , "20"        -- units: %
                                  , "--High"     , "70"        -- units: %
                                  , "--low"      , "red"
