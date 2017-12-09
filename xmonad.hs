@@ -3,10 +3,12 @@
 --
 
 import XMonad
+import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens
 import Data.Monoid
@@ -227,7 +229,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = docksEventHook <> handleEventHook def <> fullscreenEventHook
+myEventHook = docksEventHook <> handleEventHook desktopConfig
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -237,7 +239,7 @@ myEventHook = docksEventHook <> handleEventHook def <> fullscreenEventHook
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = setWMName "LG3D"
+myStartupHook = setWMName "LG3D" <> docksStartupHook
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -246,10 +248,10 @@ myStartupHook = setWMName "LG3D"
 --
 main = do
     screencount <- countScreens
-    xmonad =<< xmobar (defaults {
+    xmonad =<< (xmobar $ fullscreenSupport (defaults {
           workspaces = withScreens screencount myWorkspaces
         , logHook = dynamicLogXinerama
-        })
+        }))
 
 
 -- A structure containing your configuration settings, overriding
@@ -258,7 +260,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = def {
+defaults = desktopConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
