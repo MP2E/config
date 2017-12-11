@@ -278,7 +278,7 @@ defaults = desktopConfig {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageDocks,
+        manageHook         = myManageHook <+> manageDocks <+> manageSpawn,
         handleEventHook    = myEventHook,
         startupHook        = myStartupHook
     }
