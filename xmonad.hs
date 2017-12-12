@@ -3,6 +3,7 @@
 --
 
 import XMonad
+import XMonad.Actions.SpawnOn
 import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
@@ -66,7 +67,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawnHere "dmenu_run")
 
     -- launch gmrun
     -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -216,7 +217,8 @@ myManageHook = composeAll
     , className =? "File Operation Progress" --> doFloat
     , className =? "xfce4-notifyd"           --> doIgnore
     , className =? "desktop_window"          --> doIgnore
-    , className =? "Chromium-browser"        --> doShift "web"
+    , className =? "Chromium-browser"        --> doShift "0_web"
+    , className =? "Firefox"                 --> doShift "0_web"
     , resource  =? "desktop_window"          --> doIgnore
     , resource  =? "kdesktop"                --> doIgnore ]
 
@@ -276,7 +278,7 @@ defaults = desktopConfig {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageDocks,
+        manageHook         = myManageHook <+> manageDocks <+> manageSpawn,
         handleEventHook    = myEventHook,
         startupHook        = myStartupHook
     }
