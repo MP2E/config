@@ -8,6 +8,7 @@ import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
@@ -220,7 +221,8 @@ myManageHook = composeAll
     , className =? "Chromium-browser"        --> doShift "0_web"
     , className =? "Firefox"                 --> doShift "0_web"
     , resource  =? "desktop_window"          --> doIgnore
-    , resource  =? "kdesktop"                --> doIgnore ]
+    , resource  =? "kdesktop"                --> doIgnore
+    , isFullscreen                           --> doFullFloat ]
 
 ------------------------------------------------------------------------
 -- Event handling
