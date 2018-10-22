@@ -31,12 +31,11 @@ export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 
 # Vars used later on by Zsh
 export EDITOR="vim"
-export BROWSER=chromium
-export XTERM="urxvt"
+export BROWSER=firefox
 export LANG=en_US.UTF-8
 
-# horrible hack needed for using openssh with zsh on nixos
-export TERM="rxvt-256color"
+# hack needed to get openssh playing nice with zsh on nixos
+export XTERM="rxvt-256color"
 
 ##################################################################
 # Stuff to make my life easier
@@ -80,8 +79,8 @@ bindkey '^[w' backward-delete-to-slash
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
 # for rxvt
-# bindkey "\e[7~" beginning-of-line # Home
-# bindkey "\e[8~" end-of-line # End
+bindkey "\e[7~" beginning-of-line # Home
+bindkey "\e[8~" end-of-line # End
 
 ##################################################################
 # My aliases
