@@ -26,7 +26,7 @@ myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
@@ -252,7 +252,7 @@ myStartupHook = setWMName "LG3D" <> docksStartupHook
 --
 main = do
     screencount <- countScreens
-    xmonad =<< (xmobar $ fullscreenSupport (defaults {
+    xmonad =<< (xmobar $ ewmh $ fullscreenSupport (defaults {
           workspaces = withScreens screencount myWorkspaces
         , logHook = dynamicLogXinerama
         }))
